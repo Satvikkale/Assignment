@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellStart - ChronoNAD+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;600;700&family=Poppins:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+         :root {
+            --primary-color: #002f5c;
+            --secondary-color: #0057a6;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --background-light: #f8f9fa;
+            --border-color: #e9ecef;
+            --success-color: #28a745;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--text-light);
+        }
+        
+        .header-font {
+            font-family: 'Cabin', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .marketing-font {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Navigation */
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            width: 130px;
+            height: 45px;
+            /* background: var(--primary-color); */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #001a33;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #003d7a;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        /* Hero Section */
+        
+        .hero {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 8rem 0 4rem;
+            margin-top: 10px;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text {
+            max-width: 600px;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--background-light);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .product-card {
+            background: rgb(227, 196, 136);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 400px;
+            background: var(--background-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        /* Benefits Section */
+        
+        .benefits {
+            padding: 5rem 0;
+            background: var(--background-light);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .section-header p {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 47, 92, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        /* Science Section */
+        
+        .science {
+            padding: 5rem 0;
+        }
+        
+        .science-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .science-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .science-text p {
+            font-size: 1.125rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .science-points {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .science-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--success-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .chart-card {
+            background: white;
+            padding: 4rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+        
+        .chart-title {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .chart-bar {
+            margin-bottom: 1.5rem;
+        }
+        
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            transition: width 2s ease-in-out;
+        }
+        
+        .progress-nad {
+            background: #6c757d;
+            width: 58.8%;
+        }
+        
+        .progress-combo {
+            background: var(--secondary-color);
+            width: 100%;
+        }
+        /* animated-section  */
+        
+        .animated-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .animation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 5px;
+        }
+        
+        .animation-card {
+            text-align: center;
+        }
+        
+        .animation-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            max-width: 100%;
+            object-fit: cover;
+        }
+        
+        .animation-text {
+            margin-top: 1.5rem;
+        }
+        
+        .animation-text h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .animation-text p {
+            color: var(--secondary-color);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .animation-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .animated-section {
+                padding: 3rem 0;
+            }
+            .animation-text h3 {
+                font-size: 1.25rem;
+            }
+            .animation-text p {
+                font-size: 0.875rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .animation-grid {
+                gap: 1.5rem;
+            }
+            .chart-card {
+                padding: 1.5rem;
+            }
+        }
+        /* Testimonials Section */
+        
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--background-light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        /* CTA Section */
+        
+        .cta {
+            padding: 5rem 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        
+        .cta p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .btn-white:hover {
+            background: #f8f9fa;
+        }
+        
+        .cta-features {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        /* Footer */
+        
+        .footer {
+            background: var(--background-light);
+            padding: 3rem 0 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section ul li a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: #666;
+            font-size: 0.875rem;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .hero-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .science-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .cta-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        /* Animations */
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <img src="./Slide 4 Logo 1.png" alt="CellStart Logo" class="logo-icon">
+                </div>
+                <div class="nav-links">
+                    <a href="#benefits">Benefits</a>
+                    <a href="#science">Science</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text slide-in-left">
+                    <div class="badge">
+                        ⚡ Scientifically Proven Formula
+                    </div>
+                    <h1>Unlock Your Cellular Potential</h1>
+                    <p>Restore your cellular energy and vitality with ChronoNAD+. Our advanced formula boosts NAD+ levels up to 1.7x higher, helping you feel more vibrant and energized.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Shop Now →</a>
+                        <a href="#" class="btn btn-outline">Discover The Formula</a>
+                    </div>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <span style="color: var(--success-color);">✓</span>
+                            <span>Clinically Tested</span>
+                        </div>
+                        <div class="hero-feature">
+                            <span style="color: var(--success-color);">✓</span>
+                            <span>Third-Party Verified</span>
+                        </div>
+                        <div class="hero-feature">
+                            <span style="color: var(--success-color);">✓</span>
+                            <span>Made in USA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card slide-in-right">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif;">ChronoNAD+</h3>
+                        <p style="color: #666;">Daily Cellular Energy Support</p>
+                    </div>
+                    <div class="product-image">
+                        <img src="./Slide 4 Product.png" alt="ChronoNAD+" class="product-image">
+                    </div>
+                    <div style="space-y: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: #666; font-size: 0.875rem;">Serving Size</span>
+                            <span style="font-weight: 600;">1 Capsule Daily</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: #666; font-size: 0.875rem;">Supply</span>
+                            <span style="font-weight: 600;">30-Day Supply</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: #666; font-size: 0.875rem;">NAD+ Boost</span>
+                            <span style="font-weight: 600; color: var(--secondary-color);">Up to 1.7x</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Is NAD+ Your Cellular Fuel?</h2>
+                <p>As we age, our NAD+ levels decline, impacting our cellular health and energy. ChronoNAD+ is designed to restore these levels, helping you feel more vibrant and energized.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Enhanced Energy</h3>
+                    <p>NAD+ is a key driver of metabolism, helping your body turn food into usable energy for every cell.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🧬</div>
+                    <h3>DNA Repair</h3>
+                    <p>It helps power your body's natural processes to fix damaged DNA and keep your cells healthy.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🛡️</div>
+                    <h3>Cellular Defense</h3>
+                    <p>NAD+ activates important "longevity genes" that help your body fight off stress and maintain overall cellular wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated section -->
+
+    <section class="animated-section" style="padding: 5rem 0; background: white;">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>The Science Behind ChronoNAD+</h2>
+                <p>Combining NAD+ with Resveratrol enhances its effectiveness, providing superior cellular support and longevity benefits.</p>
+            </div>
+
+            <div class="animation-grid">
+                <div class="animation-card fade-in">
+                    <div class="chart-card">
+                        <img src="./Slide 8 Infographic 1.gif" alt="NAD+ Process Animation" class="animation-image">
+                    </div>
+                    <div class="animation-text">
+                        <h3>NAD+ Cellular Process</h3>
+                        <p>Watch how NAD+ powers your cellular energy production and supports vital metabolic functions.</p>
+                    </div>
+                </div>
+
+                <div class="animation-card fade-in">
+                    <div class="chart-card">
+                        <img src="./Slide 8 Infographic 2.gif" alt="Cellular Energy Animation" class="animation-image">
+                    </div>
+                    <div class="animation-text">
+                        <h3>Enhanced Energy Production</h3>
+                        <p>See how ChronoNAD+ boosts your cellular energy levels for improved vitality and performance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Science Section -->
+    <section id="science" class="science">
+        <div class="container">
+            <div class="science-content">
+                <div class="science-text slide-in-left">
+                    <h2>Advantage</h2>
+                    <p>Research shows that combining NAD+ with Resveratrol can boost NAD+ levels in our body up to 1.7x higher than using NAD+ alone.</p>
+
+                    <ul class="science-points">
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Activates "Longevity" Genes</h4>
+                                <p style="color: #666;">Resveratrol activates sirtuins, the proteins responsible for cellular longevity and health.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Boosts NAD+'s Function</h4>
+                                <p style="color: #666;">The synergistic effect enhances NAD+ bioavailability and cellular uptake.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="check-icon">✓</div>
+                            <div>
+                                <h4 style="font-weight: 600; color: var(--primary-color); margin-bottom: 0.5rem;">Enhanced Cellular Health & Defense</h4>
+                                <p style="color: #666;">Comprehensive cellular protection and repair for optimal health and vitality.</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <p style="font-size: 0.875rem; color: #666; font-style: italic;">*Source: Jiang et al., Pharmacology Research & Perspectives, 2022</p>
+                </div>
+
+                <div class="chart-card slide-in-right">
+                    <img src="./Slide 6 Infographic 2.png" alt="NAD+ Increase Infographic" style="width: 100%; height: auto; border-radius: 12px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Trusted by Thousands</h2>
+                <p>Join the community of people who have transformed their cellular health with ChronoNAD+.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah M.</h4>
+                            <p>Age 45, Wellness Coach</p>
+                        </div>
+                    </div>
+                    <p>"I've noticed a significant improvement in my energy levels and mental clarity since starting ChronoNAD+. It's become an essential part of my daily routine."</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">DR</div>
+                        <div class="testimonial-info">
+                            <h4>David R.</h4>
+                            <p>Age 52, Executive</p>
+                        </div>
+                    </div>
+                    <p>"The science behind ChronoNAD+ convinced me to try it. After 3 months, I feel more energetic and focused than I have in years."</p>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">ML</div>
+                        <div class="testimonial-info">
+                            <h4>Maria L.</h4>
+                            <p>Age 38, Fitness Enthusiast</p>
+                        </div>
+                    </div>
+                    <p>"ChronoNAD+ has enhanced my recovery time and overall performance. I recommend it to anyone serious about their health and longevity."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Ready to Fuel Your Cells?</h2>
+                <p>Join thousands who have already discovered the power of enhanced cellular energy. Start your journey to better health today.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-white">Fuel My Cells →</a>
+                    <a href="#" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: white;">Learn More About NAD+</a>
+                </div>
+                <div class="cta-features">
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span>30-Day Money Back Guarantee</span>
+                    </div>
+                    <div class="hero-feature">
+                        <span>✓</span>
+                        <span>Free Shipping</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-icon">CS</div>
+                        <img src="./Slide 4 Logo 1.png" alt="CellStart Logo" class="logo-icon" style="width: 100px; height: auto;">
+                    </div>
+                    <p style="color: #666; font-size: 0.875rem;">Advancing cellular health through scientifically-backed nutrition and innovative research.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">ChronoNAD+</a></li>
+                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Science Team</a></li>
+                        <li><a href="#">Quality</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CellStart. All rights reserved. | Dislapharm & CellStart</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animate progress bars when science section comes into view
+        const scienceSection = document.querySelector('#science');
+        const scienceObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate progress bars
+                    setTimeout(() => {
+                        document.getElementById('progress1').style.width = '58.8%';
+                    }, 500);
+                    setTimeout(() => {
+                        document.getElementById('progress2').style.width = '100%';
+                    }, 1000);
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+
+        if (scienceSection) {
+            scienceObserver.observe(scienceSection);
+        }
+
+        // Add hover effects to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add click tracking for CTA buttons (placeholder)
+        document.querySelectorAll('.btn-primary, .btn-white').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('CTA clicked:', this.textContent.trim());
+                // Here you would typically send analytics data or redirect to purchase page
+                alert('Thank you for your interest! This would redirect to the purchase page.');
+            });
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const navbar = document.querySelector('.navbar');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+        });
+    </script>
+</body>
+
+</html>
